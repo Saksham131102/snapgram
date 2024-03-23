@@ -154,8 +154,11 @@ export const useGetPosts = () => {
 
       const lastId = lastPage?.documents[lastPage?.documents.length - 1].$id;
 
-      return lastId;
-    }
+      const num = lastId ? parseInt(lastId) : undefined;
+
+      return num;
+    },
+    initialPageParam: 0
   })
 }
 
