@@ -2,17 +2,18 @@ import Loader from '@/components/shared/Loader';
 import UserCard from '@/components/shared/UserCard';
 import { useToast } from '@/components/ui/use-toast';
 import { useGetUsers } from '@/lib/react-query/queriesAndMutations';
-import React from 'react'
 
 const AllUsers = () => {
 
   const { toast } = useToast();
-  const { data: creators, isPending, isError: isErrorCreators} = useGetUsers();
+  const { data: creators, isPending, isError: isErrorCreators } = useGetUsers();
 
-  if(isErrorCreators) {
-    return toast({
+  // It gave me error when returning toast directly.
+  if (isErrorCreators) {
+    toast({
       title: "Something Went Wrong."
-    });
+    })
+    return;
   }
 
   return (
@@ -38,3 +39,4 @@ const AllUsers = () => {
 }
 
 export default AllUsers
+
